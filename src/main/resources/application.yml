@@ -1,0 +1,19 @@
+# 2.4 이후는 bootstrap.yml 사용하지 않아도 됨.
+# optional : config server 에서 응답을 받지 못해도 client 애플리케이션은 구동되도록 한다.
+
+server:
+  port: 8089
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: config
+  config:
+    import: "optional:configserver:http://localhost:8088"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "refresh"
